@@ -1,4 +1,4 @@
-import * as d3 from 'https://cdn.skypack.dev/d3@7';
+import * as d3 from 'd3';
 
 // Configuration
 const margin = { top: 20, right: 30, bottom: 30, left: 50 };
@@ -81,7 +81,7 @@ function drawLine(svg, scales, data) {
 }
 
 // Load Data and Render Chart
-function renderChart() {
+export function renderChart() {
     d3.json("static/weight_data.json").then(data => {
         // Parse and prepare data
         data.forEach(d => {
@@ -100,6 +100,3 @@ function renderChart() {
         console.error('Error loading or parsing the data:', error);
     });
 }
-
-// Initialize the chart
-renderChart();
