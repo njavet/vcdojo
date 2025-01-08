@@ -2,6 +2,7 @@
   <div class="app-container">
     <div id="title">Tycho Station</div>
     <div id="canvas-container"></div>
+
     <div id="stats-container">
       <div class="stats-box">
         <span><strong>Price:</strong>64</span>
@@ -28,13 +29,8 @@
 </template>
 
 <script>
-import { tycho} from "../js/lab2.js";
-
 export default {
   name: 'Lab2',
-  mounted() {
-    tycho();
-  }
 };
 
 </script>

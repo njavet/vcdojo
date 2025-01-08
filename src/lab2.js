@@ -13,17 +13,10 @@ const models = ['public/blender/drone.glb',
     'public/blender/pistol.glb']
 
 let currentModel;
+let currentModelIndex = 0;
+let isRotatingHorizontal = false;
+let isRotatingVertical = false;
 
-function animate() {
-    requestAnimationFrame(animate);
-    if (isRotatingHorizontal && currentModel) {
-        currentModel.rotation.y += 0.001;
-    }
-    if (isRotatingVertical && currentModel) {
-        currentModel.rotation.z += 0.001;
-    }
-    renderer.render(scene, camera);
-}
 
 export function initializeScene(container) {
     renderer.setSize(window.innerWidth, window.innerHeight);
@@ -37,8 +30,7 @@ export function initializeScene(container) {
     textureLoader.load('public/images/tarsonis_bg.jpg', (texture) => {
         scene.background = texture;
     });
-    loadModel(0);
-    renderer.setAnimationLoop(animate)
+    loadModel(currentModelIndex);
 }
 
 export function loadModel(index) {
@@ -48,24 +40,44 @@ export function loadModel(index) {
     loader.load(models[index], (gltf) => {
         currentModel = gltf.scene;
         scene.add(currentModel);
+
     })
 }
 
-export function changeModelColor(color) {
-    if (currentModel) {
-        currentModel.traverse((child) => {
-            if (child.isMesh && child.material) {
-                // Check if the material is an array (e.g., multi-material)
-                if (Array.isArray(child.material)) {
-                    child.material.forEach((mat) => mat.color.set(color));
-                } else {
-                    child.material.color.set(color);
-                }
-            }
-        });
+export function animate() {
+    requestAnimationFrame(animate);
+    if (isRotatingHorizontal && currentModel) {
+        currentModel.rotation.y += 0.001;
     }
+    if (isRotatingVertical && currentModel) {
+        currentModel.rotation.z += 0.001;
+    }
+    renderer.render(scene, camera);
 }
 
+
+
+// Event listeners for buttons
+document.getElementById('next-model').addEventListener('click',
+    () => switchModel('next'));
+document.getElementById('prev-model').addEventListener('click',
+    () => switchModel('prev'));
+document.getElementById('rotateHorizontal').addEventListener('click',
+    () => {
+    isRotatingHorizontal = !isRotatingHorizontal;
+});
+document.getElementById('rotateVertical').addEventListener('click',
+    () => {
+        isRotatingVertical = !isRotatingVertical;
+    });
+document.querySelectorAll('.color-btn').forEach((button) => {
+    button.addEventListener('click', (event) => {
+        const color = event.target.getAttribute('data-color');
+        changeModelColor(color);
+    });
+});
+
+// Function to switch to the next or previous model
 
 function onWindowResize() {
     camera.aspect = window.innerWidth / window.innerHeight;
@@ -80,7 +92,7 @@ function updateProductStats(price, weight, desc) {
     document.querySelector('#stats-container .stats-box:nth-child(3) span').textContent = `Description: ${desc}`;
 }
 
-function load3Model(index) {
+function loadModel(index) {
     if (currentModel) {
         scene.remove(currentModel);
     }
@@ -106,3 +118,33 @@ function load3Model(index) {
 
 }
 
+function changeModelColor(color) {
+    if (currentModel) {
+        currentModel.traverse((child) => {
+            if (child.isMesh && child.material) {
+                // Check if the material is an array (e.g., multi-material)
+                if (Array.isArray(child.material)) {
+                    child.material.forEach((mat) => mat.color.set(color));
+                } else {
+                    child.material.color.set(color);
+                }
+            }
+        });
+    }
+}
+
+
+function switchModel(direction) {
+    if (direction === 'next') {
+        currentModelIndex = (currentModelIndex + 1) % models.length; // Cycle forward
+    } else if (direction === 'prev') {
+        currentModelIndex = (currentModelIndex - 1 + models.length) % models.length; // Cycle backward
+    }
+    loadModel(currentModelIndex);
+}
+
+
+
+export function tycho() {
+    renderer.setAnimationLoop(animate);
+}
