@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h1>Home Page</h1>
-    <p>Welcome to the Home Page!</p>
+    <h1>Visual Computing Dojo</h1>
+    <p>Welcome to the Visual Computing Dojo!</p>
     <router-link to="/about">Go to About</router-link>
   </div>
 </template>
