@@ -9,4 +9,5 @@ def run_app():
                 port=8080,
                 reload=True,
                 factory=True,
-                log_level='debug')
+                log_level='debug',
+                reload_dirs=['vcdojo/static', 'vcdojo/templates'])

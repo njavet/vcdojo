@@ -13,4 +13,9 @@ def create_app():
         html_path = Path('vcdojo/templates/index.html').read_text()
         return HTMLResponse(content=html_path)
 
+    @app.get('/lab00', response_class=HTMLResponse)
+    def read_lab00():
+        html_path = Path('vcdojo/templates/lab00.html').read_text()
+        return HTMLResponse(content=html_path)
+
     return app
