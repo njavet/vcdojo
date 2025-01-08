@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Tarsonis High Tek Shop</title>
+		<style>
+			body {
+				margin: 0;
+				overflow: hidden;
+				position: relative;
+			}
+			#canvas-container {
+				position: relative;
+				width: 100%;
+				height: 100vh;
+				overflow: hidden;
+			}
+			#title {
+				position: absolute;
+				top: 20px;
+				left: 20px;
+				font-size:36px;
+				font-weight: bold;
+				color: cyan;
+				z-index: 10;
+			}
+			#controls {
+				position: absolute;
+				top: 80px;
+				left: 20px;
+				background-color: rgba(255, 255, 255, 0.9);
+				padding: 20px;
+				border-right: 2px solid cyan;
+				z-index: 16;
+			}
+			#stats-container {
+				position: absolute;
+				right: 0;
+				top: 0;
+				width: 25%;
+				background-color: black;
+				color: white;
+				padding: 20px;
+				box-sizing: border-box;
+				z-index: 10;
+				height: 100vh;
+			}
+			.color-btn {
+				display: block;
+				width: 100%;
+				padding: 10px;
+				margin: 5px 0;
+				background-color: black;
+				border: 2px solid cyan;
+				color: white;
+				text-align: center;
+				cursor: pointer;
+			}
+			.switch-btn {
+				display: block;
+				margin: 10px 0;
+				padding: 5px;
+				border: 2px solid cyan;
+				cursor: pointer;
+				color: white;
+				background-color: black;
+				text-align: center;
+			}
+			.stats-box {
+				margin: 20px 0;
+			}
+			.stats-box {
+				display: block;
+				margin: 20px 0;
+				font-size: 16px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="title">Tarsonis High Tek Shop</div>
+		<div id="canvas-container"></div>
+		<div id="stats-container">
+			<div class="stats-box">
+				<span><strong>Price:</strong>64</span>
+			</div>
+			<div class="stats-box">
+				<span><strong>Weight:</strong>128</span>
+			</div>
+			<div class="stats-box">
+				<span><strong>Description:</strong>yo</span>
+			</div>
+		</div>
+	    <div id="controls">
+			<button class="color-btn" data-color="#6312ff">Purple</button>
+			<button class="color-btn" data-color="#ffffff">White</button>
+			<button class="color-btn" data-color="#000000">Black</button>
+			<button class="color-btn" data-color="#c0c0c0">Silver</button>
+			<button id="rotateHorizontal" class="switch-btn">Toggle Horizontal Rotation</button>
+			<button id="rotateVertical" class="switch-btn">Toggle Vertical Rotation</button>
+			<button id="prev-model" class="switch-btn">Previous Model</button>
+        	<button id="next-model" class="switch-btn">Next Model</button>
+    	</div>
+
+		<script type="module" src="/main.js"></script>
+
+	</body>
+</html>
