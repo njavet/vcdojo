@@ -7,8 +7,15 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.13"
+opencv-python = "^4.10.0.84"
+matplotlib = "^3.10.0"
+fastapi = "^0.115.6"
 
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+run = "vcdojo:run"
+
