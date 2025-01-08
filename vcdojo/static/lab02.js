@@ -1,5 +1,6 @@
 import * as THREE from 'three';
-import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+// import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75,
@@ -7,7 +8,9 @@ const camera = new THREE.PerspectiveCamera(75,
 
 const renderer = new THREE.WebGLRenderer();
 
-const models = ['drone.glb', 'rail_gun.glb', 'pistol.glb']
+const models = ['static/blender/drone.glb',
+    'static/blender/rail_gun.glb',
+    'static/blender/pistol.glb']
 let isRotatingHorizontal = false;
 let isRotatingVertical = false;
 
