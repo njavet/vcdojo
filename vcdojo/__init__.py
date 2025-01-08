@@ -10,4 +10,6 @@ def run_app():
                 reload=True,
                 factory=True,
                 log_level='debug',
-                reload_dirs=['vcdojo/static', 'vcdojo/templates'])
+                reload_dirs=['vcdojo',
+                             'vcdojo/static',
+                             'vcdojo/templates'])
