@@ -1,2 +1,0 @@
-# vcdojo
-Visual Computing Dojo
