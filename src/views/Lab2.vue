@@ -1,51 +1,35 @@
 <template>
-  <div>
-    <h1>MCRN Donnager</h1>
-    <a href="/">Back to Home</a>
-    <br><br>
-    <object type="image/svg+xml"
-            data="/public/images/donnager_logo.svg" width="64" height="64">
-    </object>
-    <br><br>
-    This page gives you some information about the Martian Congressional
-    Republic Navy flagship Donnager.
-    <br>
-    <div id="svg-container"></div>
-    <h2>Armament</h2>
-    <div id="armament">
-      <ul>
-        <li>14x configurable torpedo tubes</li>
-        <li>2X Railguns</li>
-        <li>Full Point Defense Network</li>
-        <li>59X Nariman Dynamics 44mm point defense cannons</li>
-      </ul>
+  <div class="app-container">
+    <div id="title">Tycho Station</div>
+    <div id="canvas-container"></div>
+    <div id="stats-container">
+      <div class="stats-box">
+        <span><strong>Price:</strong>64</span>
+      </div>
+      <div class="stats-box">
+        <span><strong>Weight:</strong>128</span>
+      </div>
+      <div class="stats-box">
+        <span><strong>Description:</strong>yo</span>
+      </div>
     </div>
-
-    <router-link to="/">Go to Home</router-link>
+    <div id="controls">
+      <button class="color-btn" data-color="#6312ff">Purple</button>
+		  <button class="color-btn" data-color="#ffffff">White</button>
+		  <button class="color-btn" data-color="#000000">Black</button>
+		  <button class="color-btn" data-color="#c0c0c0">Silver</button>
+		  <button id="rotateHorizontal" class="switch-btn">Toggle Horizontal Rotation</button>
+		  <button id="rotateVertical" class="switch-btn">Toggle Vertical Rotation</button>
+		  <button id="prev-model" class="switch-btn">Previous Model</button>
+      <button id="next-model" class="switch-btn">Next Model</button>
+    </div>
+      <router-link to="/">Go to Home</router-link>
   </div>
-
 </template>
 
 <script>
 export default {
-  name: 'Lab0',
+  name: 'Lab2',
 };
-fetch('/public/images/donnager_ship.svg')
-    .then(response => response.text())
-    .then(svgContent => {
-      document.getElementById('svg-container').innerHTML = svgContent;
-      const svgElement = document.querySelector('#svg-container svg');
-      let posX = 0;
-      const speed = 2;
 
-      function moveSvg() {
-        posX += speed;
-        svgElement.style.transform = `translateX(${posX}px`;
-        if (posX > window.innerWidth) {
-          posX = -svgElement.getBoundingClientRect().width;
-        }
-        requestAnimationFrame(moveSvg)
-      }
-      moveSvg();
-    }).catch(err => console.error('failed to load svg:', err));
 </script>
