@@ -28,8 +28,13 @@
 </template>
 
 <script>
+import { tycho} from "../js/lab2.js";
+
 export default {
   name: 'Lab2',
+  mounted() {
+    tycho();
+  }
 };
 
 </script>

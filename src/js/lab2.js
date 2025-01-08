@@ -6,7 +6,7 @@ const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75,
     window.innerWidth / window.innerHeight, 0.1, 1000);
 
-const renderer = new THREE.WebGLRenderer();
+export const renderer = new THREE.WebGLRenderer();
 
 const models = ['static/blender/drone.glb',
     'static/blender/rail_gun.glb',
@@ -128,5 +128,8 @@ function animate() {
     renderer.render(scene, camera);
 }
 
-loadModel(currentModelIndex);
-renderer.setAnimationLoop(animate);
+
+export function tycho() {
+    loadModel(currentModelIndex);
+    renderer.setAnimationLoop(animate);
+}
