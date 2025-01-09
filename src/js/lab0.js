@@ -1,6 +1,6 @@
 
 export function donnager() {
-  fetch('/public/images/donnager_ship.svg')
+  fetch('/images/donnager_ship.svg')
       .then(response => response.text())
       .then(svgContent => {
         document.getElementById('svg-container').innerHTML = svgContent;

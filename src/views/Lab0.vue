@@ -4,7 +4,7 @@
     <a href="/">Back to Home</a>
     <br><br>
     <object type="image/svg+xml"
-            data="/public/images/donnager_logo.svg" width="64" height="64">
+            data="/images/donnager_logo.svg" width="64" height="64">
     </object>
     <br><br>
     This page gives you some information about the Martian Congressional
