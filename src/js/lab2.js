@@ -24,15 +24,16 @@ function load_model(model_index) {
     loader.load(models[model_index], function(gltf) {
         current_model = gltf.scene;
         scene.add(current_model);
+        renderer.render(scene, camera);
     })
 }
 
 function animate() {
-    requestAnimationFrame(animate);
     if (rotating_horizontal && current_model) {
         current_model.rotation.y += 0.0005;
+        renderer.render(scene, camera);
     }
-    renderer.render(scene, camera);
+    requestAnimationFrame(animate);
 }
 
 export function initializeScene(container) {
@@ -47,8 +48,10 @@ export function initializeScene(container) {
     const textureLoader = new THREE.TextureLoader();
     textureLoader.load('/images/luna.svg', (texture) => {
         scene.background = texture;
+        renderer.render(scene, camera);
     });
     load_model(current_model_index, models)
+    renderer.setAnimationLoop(animate)
 }
 
 export function toggle_rotation() {
@@ -79,4 +82,3 @@ export function change_model_color(color) {
     }
 }
 
-renderer.setAnimationLoop(animate)

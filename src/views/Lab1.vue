@@ -9,6 +9,7 @@
 export default {
   name: 'Lab1',
 };
+import '../styles/lab1.css'
 import { renderChart } from "../js/lab1.js";
 renderChart();
 </script>
