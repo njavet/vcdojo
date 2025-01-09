@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import { initializeScene, loadModel, animate, changeModelColor } from '../js/lab2.js';
+import { initializeScene, loadModel, changeModelColor } from '../js/lab2.js';
 export default {
   name: 'Lab2',
   data() {
@@ -42,12 +42,6 @@ export default {
         weight: 0,
         description: ''
       },
-      models: {
-        'blender/drone.glb': 0,
-        'blender/space_ship.glb': 1,
-        'blender/rail_gun.glb': 2,
-        'blender/pistol.glb': 3
-      },
     }
   },
   mounted() {
@@ -56,15 +50,13 @@ export default {
     console.log(container);
     console.log(this.models)
     initializeScene(container);
-    loadModel(2, this.models);
-    //animate()
   },
   methods: {
     switchModel(direction) {
       if (direction === 'next') {
-        this.currentModelIndex = (this.currentModelIndex + 1) % this.models.length;
+        this.currentModelIndex = (this.currentModelIndex + 1) % 4;
       } else if (direction === 'prev') {
-        this.currentModelIndex = (this.currentModelIndex - 1 + this.models.length) % this.models.length;
+        this.currentModelIndex = (this.currentModelIndex - 1 + 4) % 4;
       }
       loadModel(this.currentModelIndex);
     },

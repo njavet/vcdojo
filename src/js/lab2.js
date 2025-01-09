@@ -7,9 +7,13 @@ const camera = new THREE.PerspectiveCamera(75,
     window.innerWidth / window.innerHeight, 0.1, 1000);
 const renderer = new THREE.WebGLRenderer();
 const loader = new GLTFLoader();
-const models = ['blender/drone.glb', 'blender/space_ship.glb', 'blender/rail_gun.glb', 'blender/pistol.glb']
+const models = [
+    'blender/drone.glb',
+    'blender/space_ship.glb',
+    'blender/rail_gun.glb',
+    'blender/pistol.glb']
 
-let currentModelIndex = 1;
+let currentModelIndex = 0;
 let currentModel;
 let isRotatingHorizontal = false
 let isRotatingVertical = false
@@ -27,14 +31,8 @@ export function initializeScene(container) {
     textureLoader.load('/images/luna.svg', (texture) => {
         scene.background = texture;
     });
-    loader.load(models[currentModelIndex], function(gltf) {
-        currentModel = gltf.scene;
-        scene.add(currentModel);
-        renderer.render(scene, camera);
-    })
-    console.log('renderd')
+    loadModel(0, models)
     renderer.render(scene, camera);
-    //renderer.setAnimationLoop(animate)
 }
 
 export function animate() {
@@ -66,7 +64,7 @@ export function changeModelColor(color) {
     }
 }
 
-export function loadModel(index, models) {
+export function loadModel(index) {
     if (currentModel) {
         scene.remove(currentModel);
     }
@@ -76,4 +74,3 @@ export function loadModel(index, models) {
         renderer.render(scene, camera);
     })
 }
-

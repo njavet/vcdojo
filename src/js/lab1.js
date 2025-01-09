@@ -82,7 +82,7 @@ function drawLine(svg, scales, data) {
 
 // Load Data and Render Chart
 export function renderChart() {
-    d3.json("static/weight_data.json").then(data => {
+    d3.json("private/weight_data.json").then(data => {
         // Parse and prepare data
         data.forEach(d => {
             d.datetime = parseDate(d.datetime)
