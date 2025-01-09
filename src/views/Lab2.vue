@@ -1,8 +1,6 @@
 <template>
   <div class="app-container">
     <h1>Tycho Station</h1>
-    <div id="canvas-container"></div>
-
     <div id="stats-container">
       <div class="stats-box">
         <span><strong>Price:</strong>64</span>
@@ -43,22 +41,30 @@ export default {
         price: 0,
         weight: 0,
         description: ''
-      }
+      },
+      models: {
+        'blender/drone.glb': 0,
+        'blender/space_ship.glb': 1,
+        'blender/rail_gun.glb': 2,
+        'blender/pistol.glb': 3
+      },
     }
   },
   mounted() {
     // Initialize the Three.js scene
     const container = this.$el;
+    console.log(container);
+    console.log(this.models)
     initializeScene(container);
-    //loadModel(container, this.updateProductStats);
+    loadModel(2, this.models);
     //animate()
   },
   methods: {
     switchModel(direction) {
       if (direction === 'next') {
-        this.currentModelIndex = (this.currentModelIndex + 1) % models.length;
+        this.currentModelIndex = (this.currentModelIndex + 1) % this.models.length;
       } else if (direction === 'prev') {
-        this.currentModelIndex = (this.currentModelIndex - 1 + models.length) % models.length;
+        this.currentModelIndex = (this.currentModelIndex - 1 + this.models.length) % this.models.length;
       }
       loadModel(this.currentModelIndex);
     },
