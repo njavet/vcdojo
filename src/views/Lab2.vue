@@ -1,6 +1,7 @@
 <template>
   <div class="app-container">
     <h1>Tycho Station</h1>
+    <div id="canvas-container">
     <div id="stats-container">
       <div class="stats-box">
         <span><strong>Price:</strong>64</span>
@@ -22,6 +23,7 @@
         {{ color }}
       </button>
     </div>
+      </div>
       <router-link to="/">Go to Home</router-link>
   </div>
 </template>

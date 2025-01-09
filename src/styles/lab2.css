@@ -3,6 +3,14 @@ body {
 	overflow: hidden;
 	position: relative;
 }
+
+#app-container {
+	position: absolute;
+	width: 100%;
+	height: 100vh;
+	overflow: hidden;
+}
+
 #canvas-container {
 	position: relative;
 	width: 100%;

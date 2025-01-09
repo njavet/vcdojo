@@ -32,8 +32,8 @@ function animate() {
     if (rotating_horizontal && current_model) {
         current_model.rotation.y += 0.0005;
         renderer.render(scene, camera);
+        requestAnimationFrame(animate);
     }
-    requestAnimationFrame(animate);
 }
 
 export function initializeScene(container) {
