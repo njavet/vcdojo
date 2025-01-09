@@ -8,9 +8,12 @@ const renderer = new THREE.WebGLRenderer();
 const loader = new GLTFLoader();
 const models = [
     'blender/drone.glb',
-    'blender/space_ship.glb',
+    'blender/war_drone.glb',
     'blender/rail_gun.glb',
-    'blender/pistol.glb']
+    'blender/gun.glb',
+    'blender/shotgun.glb',
+    'blender/robot.glb'
+]
 
 let current_model_index= 0;
 let current_model;
@@ -46,7 +49,7 @@ export function initializeScene(container) {
 
     container.appendChild(renderer.domElement);
     const textureLoader = new THREE.TextureLoader();
-    textureLoader.load('/images/luna.svg', (texture) => {
+    textureLoader.load('/images/bg.jpg', (texture) => {
         scene.background = texture;
         renderer.render(scene, camera);
     });
@@ -79,6 +82,7 @@ export function change_model_color(color) {
                 }
             }
         });
+        renderer.render(scene, camera);
     }
 }
 

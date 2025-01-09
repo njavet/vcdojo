@@ -1,7 +1,6 @@
 <template>
   <div class="app-container">
     <h1>Tycho Station</h1>
-    <div id="canvas-container">
     <div id="stats-container">
       <div class="stats-box">
         <span><strong>Price:</strong>64</span>
@@ -23,19 +22,18 @@
         {{ color }}
       </button>
     </div>
-      </div>
       <router-link to="/">Go to Home</router-link>
   </div>
 </template>
 
 <script>
-import '../styles/lab2.css';
+//import '../styles/lab2.css';
 import { initializeScene, toggle_rotation, switch_model, change_model_color} from '../js/lab2.js';
 export default {
   name: 'Lab2',
   data() {
     return {
-      colors: ['#ff0000', '#00ff00', '#0000ff', '#ffff00'],
+      colors: ['#ffffff', '#000000', '#6312ff', '#950000'],
     }
   },
   mounted() {
