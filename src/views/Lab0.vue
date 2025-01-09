@@ -20,8 +20,6 @@
         <li>59X Nariman Dynamics 44mm point defense cannons</li>
       </ul>
     </div>
-
-    <router-link to="/">Go to Home</router-link>
   </div>
 
 </template>

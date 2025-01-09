@@ -7,15 +7,18 @@ const camera = new THREE.PerspectiveCamera(75,
     window.innerWidth / window.innerHeight, 0.1, 1000);
 const renderer = new THREE.WebGLRenderer();
 const loader = new GLTFLoader();
-const textureLoader = new THREE.TextureLoader();
 const models = ['public/blender/drone.glb',
     'public/blender/rail_gun.glb',
     'public/blender/pistol.glb']
 
 let currentModel;
+let isRotatingHorizontal = false
+let isRotatingVertical = false
 
-function animate() {
-    requestAnimationFrame(animate);
+export function animate() {
+    // requestAnimationFrame(animate);
+    renderer.setAnimationLoop(() => {
+
     if (isRotatingHorizontal && currentModel) {
         currentModel.rotation.y += 0.001;
     }
@@ -23,6 +26,7 @@ function animate() {
         currentModel.rotation.z += 0.001;
     }
     renderer.render(scene, camera);
+    });
 }
 
 export function initializeScene(container) {
@@ -34,22 +38,14 @@ export function initializeScene(container) {
     const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
     directionalLight.position.set(1, 1, 1).normalize();
     scene.add(light, directionalLight);
-    textureLoader.load('public/images/tarsonis_bg.jpg', (texture) => {
+    const textureLoader = new THREE.TextureLoader();
+    textureLoader.load('/images/tarsonis_bg.jpg', (texture) => {
         scene.background = texture;
+        renderer.render(scene, camera);
     });
-    loadModel(0);
-    renderer.setAnimationLoop(animate)
+    //renderer.setAnimationLoop(animate)
 }
 
-export function loadModel(index) {
-    if (currentModel) {
-        scene.remove(currentModel);
-    }
-    loader.load(models[index], (gltf) => {
-        currentModel = gltf.scene;
-        scene.add(currentModel);
-    })
-}
 
 export function changeModelColor(color) {
     if (currentModel) {
@@ -66,21 +62,7 @@ export function changeModelColor(color) {
     }
 }
 
-
-function onWindowResize() {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    render();
-}
-
-function updateProductStats(price, weight, desc) {
-    document.querySelector('#stats-container .stats-box:first-child span').textContent = `Price: ${price} coins`;
-    document.querySelector('#stats-container .stats-box:nth-child(2) span').textContent = `Weight: ${weight} kg`;
-    document.querySelector('#stats-container .stats-box:nth-child(3) span').textContent = `Description: ${desc}`;
-}
-
-function load3Model(index) {
+export function loadModel(index, updateStats) {
     if (currentModel) {
         scene.remove(currentModel);
     }
@@ -88,21 +70,20 @@ function load3Model(index) {
         currentModel = gltf.scene;
         if (0 === index) {
             var desc = "A next generation AI drone with two plasma guns"
-            updateProductStats(2048, 256, desc);
+            updateStats(2048, 256, desc);
         }
         if (1 === index) {
             var desc = "A big rail gun, optimal for defending your flat"
             currentModel.scale.set(0.5, 0.5, 0.5)
-            updateProductStats(1024, 128, desc);
+            updateStats(1024, 128, desc);
         }
         if (2 === index) {
             var desc = "plasma hand gun, good for showing off"
             currentModel.scale.set(0.5, 0.5, 0.5)
             currentModel.scale.set(0.5, 0.5, 0.5)
-            updateProductStats(64, 2, desc);
+            updateStats(64, 2, desc);
         }
         scene.add(currentModel);
     })
-
 }
 

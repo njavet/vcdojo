@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-    <div id="title">Tycho Station</div>
+    <h1>Tycho Station</h1>
     <div id="canvas-container"></div>
 
     <div id="stats-container">
@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import { initializeScene, loadModel, changeModelColor } from '../js/lab2.js';
+import { initializeScene, loadModel, animate, changeModelColor } from '../js/lab2.js';
 export default {
   name: 'Lab2',
   data() {
@@ -39,12 +39,19 @@ export default {
       isRotatingHorizontal: false,
       isRotatingVertical: false,
       colors: ['#ff0000', '#00ff00', '#0000ff', '#ffff00'],
+      stats: {
+        price: 0,
+        weight: 0,
+        description: ''
+      }
     }
   },
   mounted() {
     // Initialize the Three.js scene
     const container = this.$el;
     initializeScene(container);
+    //loadModel(container, this.updateProductStats);
+    //animate()
   },
   methods: {
     switchModel(direction) {
@@ -65,6 +72,11 @@ export default {
     changeModelColor(color) {
       changeModelColor(color);
     },
+  },
+  updateProductStats(price, weight, desc) {
+    this.stats.price = price;
+    this.stats.weight = weight;
+    this.stats.description = desc;
   }
 };
 </script>
