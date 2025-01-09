@@ -13,16 +13,14 @@
       </div>
     </div>
     <div id="controls">
-      <button @click="switch_model('prev')">Previous Model</button>
-      <button @click="switch_model('next')">Next Model</button>
-      <button @click="toggle_rotation('horizontal')">Toggle Horizontal Rotation</button>
-    </div>
-    <div id="color-controls">
-      <button v-for="color in colors" :key="color" :data-color="color" @click="change_model_color(color)">
+      <button class="switch-btn" @click="switch_model('prev')">Previous Model</button>
+      <button class="switch-btn" @click="switch_model('next')">Next Model</button>
+      <button class="switch-btn" @click="toggle_rotation('horizontal')">Toggle Horizontal Rotation</button>
+      <button class="color-btn" v-for="color in colors" :key="color" :data-color="color" @click="change_model_color(color)">
         {{ color }}
       </button>
-    </div>
       <router-link to="/">Go to Home</router-link>
+    </div>
   </div>
 </template>
 
@@ -39,6 +37,7 @@ export default {
   mounted() {
     // Initialize the Three.js scene
     const container = this.$el;
+    console.log(container);
     initializeScene(container);
   },
   methods: {
