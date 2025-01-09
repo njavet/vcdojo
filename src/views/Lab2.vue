@@ -13,12 +13,12 @@
       </div>
     </div>
     <div id="controls">
-      <button @click="switchModel('prev')">Previous Model</button>
-      <button @click="switchModel('next')">Next Model</button>
-      <button @click="toggleRotation('horizontal')">Toggle Horizontal Rotation</button>
+      <button @click="switch_model('prev')">Previous Model</button>
+      <button @click="switch_model('next')">Next Model</button>
+      <button @click="toggle_rotation('horizontal')">Toggle Horizontal Rotation</button>
     </div>
     <div id="color-controls">
-      <button v-for="color in colors" :key="color" :data-color="color" @click="changeModelColor(color)">
+      <button v-for="color in colors" :key="color" :data-color="color" @click="change_model_color(color)">
         {{ color }}
       </button>
     </div>
@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import { initializeScene, toggle_rotation, changeModelColor} from '../js/lab2.js';
+import { initializeScene, toggle_rotation, switch_model, change_model_color} from '../js/lab2.js';
 export default {
   name: 'Lab2',
   data() {
@@ -41,14 +41,15 @@ export default {
     initializeScene(container);
   },
   methods: {
-    changeModelColor(color) {
-      changeModelColor(color);
+    change_model_color(color) {
+      change_model_color(color);
     },
+    toggle_rotation(rotation) {
+      toggle_rotation(rotation);
+    },
+    switch_model(model) {
+      switch_model(model);
+    }
   },
-  updateProductStats(price, weight, desc) {
-    this.stats.price = price;
-    this.stats.weight = weight;
-    this.stats.description = desc;
-  }
 };
 </script>

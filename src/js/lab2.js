@@ -30,7 +30,7 @@ function load_model(model_index) {
 function animate() {
     requestAnimationFrame(animate);
     if (rotating_horizontal && current_model) {
-        current_model.rotation.y += 0.001;
+        current_model.rotation.y += 0.0005;
     }
     renderer.render(scene, camera);
 }
@@ -49,7 +49,6 @@ export function initializeScene(container) {
         scene.background = texture;
     });
     load_model(current_model_index, models)
-    renderer.setAnimationLoop(animate)
 }
 
 export function toggle_rotation() {
@@ -79,3 +78,5 @@ export function change_model_color(color) {
         });
     }
 }
+
+renderer.setAnimationLoop(animate)
