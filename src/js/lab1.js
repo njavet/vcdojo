@@ -25,7 +25,6 @@ function createScales(data) {
     const xScale = d3.scaleTime()
         .domain(d3.extent(data, d => d.date))
         .range([0, width]);
-    console.log('xsca', xScale.domain())
 
     const yScale = d3.scaleLinear()
         .domain([d3.min(data, d => d.weight) - 1, d3.max(data, d => d.weight) + 1])
@@ -38,7 +37,6 @@ function createScales(data) {
 // Draw Axes
 function drawAxes(svg, scales) {
     const { xScale, yScale } = scales;
-    console.log(xScale)
 
     svg.append("g")
         .attr("class", "axis x-axis")
@@ -81,7 +79,7 @@ function drawLine(svg, scales, data) {
         .datum(data)
         .attr("class", "line")
         .attr("d", line)
-        .style("stroke", "steelblue");
+        .style("stroke", "red");
 }
 
 // Load Data and Render Chart
@@ -91,14 +89,14 @@ export function renderChart() {
             d.date = parseDate(d.date);
             d.weight = +d.weight
         })
-        console.log(data)
+        //console.log(data)
         const svg = createSvg();
 
         const scales = createScales(data);
 
         // Draw chart components
-        drawAxes(svg, scales);
         drawGridlines(svg, scales);
+        drawAxes(svg, scales);
         drawLine(svg, scales, data);
     }).catch(error => {
         console.error('Error loading or parsing the data:', error);

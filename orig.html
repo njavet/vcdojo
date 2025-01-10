@@ -61,6 +61,7 @@
             const xScale = d3.scaleTime()
                 .domain(d3.extent(data, d => d.date))
                 .range([0, width]);
+            console.log(xScale.domain());
 
             const yScale = d3.scaleLinear()
                 .domain([d3.min(data, d => d.weight) - 1, d3.max(data, d => d.weight) + 1])
