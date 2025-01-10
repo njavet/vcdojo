@@ -6,8 +6,6 @@
     <br>
     <router-link to="/lab0">Go to Lab 0 </router-link>
     <br>
-    <router-link to="/lab1">Go to Lab 1 </router-link>
-    <br>
     <router-link to="/lab2">Go to Lab 2 </router-link>
     <br>
     <router-link to="/bushido">Go to Bushido stats</router-link>

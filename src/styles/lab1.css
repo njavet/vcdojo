@@ -5,6 +5,9 @@ body {
 }
 .axis path,
 
+#chart {
+    background: #6312ff;
+}
 .axis line {
     fill: none;
     shape-rendering: crispEdges;
