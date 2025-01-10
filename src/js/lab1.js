@@ -3,12 +3,13 @@ import * as d3 from 'd3';
 // Configuration
 const margin = { top: 20, right: 30, bottom: 30, left: 50 };
 const width = 800 - margin.left - margin.right;
-const height = 400 - margin.top - margin.bottom;
+const height = 500 - margin.top - margin.bottom;
 
 // Formatters
-const parseDate = d3.utcParse("%Q");
+const parseDate = d3.timeParse("%d.%m.%y");
 const formatTime = d3.timeFormat("%d.%m.%y")
 const formatWeight = d3.format(".1f");
+
 
 // Create SVG
 function createSvg() {
@@ -22,12 +23,14 @@ function createSvg() {
 // Create Scales
 function createScales(data) {
     const xScale = d3.scaleTime()
-        .domain(d3.extent(data, d => d.datetime))
+        .domain(d3.extent(data, d => d.date))
         .range([0, width]);
+    console.log('xsca', xScale.domain())
 
     const yScale = d3.scaleLinear()
         .domain([d3.min(data, d => d.weight) - 1, d3.max(data, d => d.weight) + 1])
         .range([height, 0]);
+
 
     return { xScale, yScale };
 }
@@ -35,11 +38,12 @@ function createScales(data) {
 // Draw Axes
 function drawAxes(svg, scales) {
     const { xScale, yScale } = scales;
+    console.log(xScale)
 
     svg.append("g")
         .attr("class", "axis x-axis")
         .attr("transform", `translate(0,${height})`)
-        .call(d3.axisBottom(xScale).tickFormat(d => `${formatTime(new Date(d))}`))
+        .call(d3.axisBottom(xScale).tickFormat(formatTime))
         .selectAll("text")
         .style("text-anchor", "end")
         .attr("dx", "-0.8em")
@@ -70,7 +74,7 @@ function drawLine(svg, scales, data) {
     const { xScale, yScale } = scales;
 
     const line = d3.line()
-        .x(d => xScale(d.datetime))
+        .x(d => xScale(d.date))
         .y(d => yScale(d.weight));
 
     svg.append("path")
@@ -82,14 +86,14 @@ function drawLine(svg, scales, data) {
 
 // Load Data and Render Chart
 export function renderChart() {
-    d3.json("private/weight_data.json").then(data => {
-        // Parse and prepare data
+    d3.json('private/weight.json').then(data => {
         data.forEach(d => {
-            d.datetime = parseDate(d.datetime)
-        });
-
-        // Create SVG and scales
+            d.date = parseDate(d.date);
+            d.weight = +d.weight
+        })
+        console.log(data)
         const svg = createSvg();
+
         const scales = createScales(data);
 
         // Draw chart components
@@ -98,5 +102,5 @@ export function renderChart() {
         drawLine(svg, scales, data);
     }).catch(error => {
         console.error('Error loading or parsing the data:', error);
-    });
+    })
 }
