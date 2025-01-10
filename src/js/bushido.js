@@ -49,6 +49,7 @@ function draw_gridlines(svg, scales) {
     svg.append("g")
         .attr("class", "grid")
         .attr("transform", `translate(0,${height})`)
+        .style("stroke", "lightgrey")
         .call(d3.axisBottom(xScale).ticks(10).tickSize(-height).tickFormat(""));
 
     svg.append("g")
@@ -67,11 +68,13 @@ function draw_line(svg, scales, data) {
         .datum(data)
         .attr("class", "line")
         .attr("d", line)
+        .style("fill", "none")
+        .style("stroke", "lightgrey")
 }
 
-export function render_chart(container) {
+export function render_chart() {
     const parseDate = d3.timeParse("%Y-%m-%d");
-    const svg = create_svg(800, 600, "#chart");
+    const svg = create_svg(800, 600, "#weight");
 
     d3.json("private/weight.json").then(data => {
         data.forEach(d => {
@@ -109,7 +112,7 @@ export function draw_bars() {
         .tickFormat(d3.timeFormat("%d.%m.%y"));
     var yAxis = d3.axisLeft(y)
         .ticks(10);
-    var svg = create_svg(width, height, "#bars")
+    var svg = create_svg(width, height, "#study")
 
     d3.json("private/study.json").then(data => {
         data.forEach(function (d) {

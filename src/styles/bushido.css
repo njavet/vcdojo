@@ -1,9 +1,3 @@
-body {
-    font-family: Inconsolata, sans-serif;
-    color: #6312ff;
-    background-color: #e0d4fc;
-}
-.axis path,
 
 #stats-container {
     background-color: #b9a0f9;
@@ -20,21 +14,4 @@ body {
 #chart {
     background-color: grey;
     text-anchor: end;
-}
-
-.axis line {
-    fill: none;
-    shape-rendering: crispEdges;
-}
-
-.grid line {
-    stroke: lightgrey;
-    stroke-opacity: 0.7;
-    shape-rendering: crispEdges;
-}
-
-.line {
-    fill: none;
-    stroke: #6312ff;
-    stroke-width: 2px;
 }

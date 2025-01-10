@@ -1,9 +1,9 @@
 <template>
   <div>
     <div id="svg-container">
-      <svg class="svg-item" width="600" height="400"></svg>
+      <svg id="weight" class="svg-item" width="600" height="400"></svg>
       <br><br>
-      <svg class="svg-item" width="600" height="400"></svg>/
+      <svg id="study" class="svg-item" width="600" height="400"></svg>/
     </div>
 
   </div>
@@ -14,8 +14,7 @@ import { render_chart, draw_bars} from "../js/bushido.js"
 export default {
   name: 'Bushido',
   mounted() {
-    const container = this.$el;
-    render_chart(container)
+    render_chart()
     draw_bars()
   }
 }
