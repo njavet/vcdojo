@@ -1,22 +1,21 @@
 <template>
-  <div class="app-container">
-    <div id="title">Tycho Station Weapon Shop</div>
-    <div id="stats-container">
-      <div class="stats-box">
-        <span><strong>Price:</strong>64</span>
-      </div>
-      <div class="stats-box">
-        <span><strong>Weight:</strong>128</span>
-      </div>
-      <div class="stats-box">
-        <span><strong>Description:</strong>yo</span>
-      </div>
+  <div class="tycho">
+    <h1>Tycho Station Weapon Shop</h1>
+    <div id="three-container"></div>
+    <div class="stats-box">
+      <span><strong>Price:</strong>64</span>
+    </div>
+    <div class="stats-box">
+      <span><strong>Weight:</strong>128</span>
+    </div>
+    <div class="stats-box">
+      <span><strong>Description:</strong>yo</span>
     </div>
     <div id="controls">
-      <button class="switch-btn" @click="switch_model('prev')">Previous Model</button>
-      <button class="switch-btn" @click="switch_model('next')">Next Model</button>
-      <button class="switch-btn" @click="toggle_rotation('horizontal')">Toggle Horizontal Rotation</button>
-      <button class="color-btn" v-for="color in colors" :key="color" :data-color="color" @click="change_model_color(color)">
+      <button @click="switch_model('prev')">Previous Model</button>
+      <button @click="switch_model('next')">Next Model</button>
+      <button @click="toggle_rotation('horizontal')">Toggle Horizontal Rotation</button>
+      <button v-for="color in colors" :key="color" :data-color="color" @click="change_model_color(color)">
         {{ color }}
       </button>
     </div>
@@ -24,9 +23,9 @@
 </template>
 
 <script>
-import { initializeScene, toggle_rotation, switch_model, change_model_color} from '../js/lab2.js';
+import { initializeScene, toggle_rotation, switch_model, change_model_color} from '../js/tycho.js';
 export default {
-  name: 'Lab2',
+  name: 'Tycho',
   data() {
     return {
       colors: ['#ffffff', '#000000', 'grey', '#950000'],
@@ -34,9 +33,7 @@ export default {
   },
   mounted() {
     // Initialize the Three.js scene
-    const container = this.$el;
-    console.log(container);
-    initializeScene(container);
+    initializeScene();
   },
   methods: {
     change_model_color(color) {
@@ -51,3 +48,16 @@ export default {
   },
 };
 </script>
+<style scoped>
+
+.tycho {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  background-image: url('images/bg.svg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+</style>

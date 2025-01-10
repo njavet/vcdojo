@@ -2,9 +2,11 @@ import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75,
-    window.innerWidth / window.innerHeight, 0.1, 1000);
+const camera = new THREE.PerspectiveCamera(
+    75, window.innerWidth / window.innerHeight, 0.1, 1000
+);
 const renderer = new THREE.WebGLRenderer();
+
 const loader = new GLTFLoader();
 const models = [
     'blender/drone.glb',
@@ -39,21 +41,20 @@ function animate() {
     }
 }
 
-export function initializeScene(container) {
+export function initializeScene() {
+    const container = document.getElementById('three-container');
+    camera.position.z = 5;
+    renderer.setSize(container.clientWidth, container.clientHeight);
+    console.log(container.clientWidth)
+    console.log(container.clientHeight)
+    container.appendChild(renderer.domElement);
+
     const light = new THREE.AmbientLight(0x404040, 1, 1);
     const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-    camera.position.z = 5;
     directionalLight.position.set(1, 1, 1).normalize();
     scene.add(light, directionalLight);
-    renderer.setSize(window.innerWidth, window.innerHeight);
-
-    container.appendChild(renderer.domElement);
     const textureLoader = new THREE.TextureLoader();
-    textureLoader.load('/images/bg.jpg', (texture) => {
-        scene.background = texture;
-        renderer.render(scene, camera);
-    });
-    load_model(current_model_index, models)
+    load_model(current_model_index)
     renderer.setAnimationLoop(animate)
 }
 
