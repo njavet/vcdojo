@@ -1,6 +1,6 @@
 <template>
   <div class="tycho">
-    <h1>Tycho Station Weapon Shop</h1>
+    <h1 class="title">Tycho Station Weapon Shop</h1>
     <div id="three-container"></div>
     <div class="stats-box">
       <span><strong>Price:</strong>64</span>
@@ -54,10 +54,18 @@ export default {
   width: 100vw;
   height: 100vh;
   display: flex;
+  text-align: center;
   background-image: url('images/bg.svg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+}
+
+
+#three-container {
+  width: 800px;
+  height: 800px;
+  display: flex;
 }
 
 </style>

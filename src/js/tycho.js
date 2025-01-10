@@ -44,8 +44,8 @@ function animate() {
 export function initializeScene() {
     const container = document.getElementById('three-container');
     camera.position.z = 5;
-    renderer.setSize(container.clientWidth, container.clientHeight);
-    console.log(container.clientWidth)
+    renderer.setSize(container.clientHeight, container.clientWidth);
+    console.log('wid', container.clientWidth)
     console.log(container.clientHeight)
     container.appendChild(renderer.domElement);
 
@@ -54,6 +54,10 @@ export function initializeScene() {
     directionalLight.position.set(1, 1, 1).normalize();
     scene.add(light, directionalLight);
     const textureLoader = new THREE.TextureLoader();
+    textureLoader.load('/images/frame.jpg', (texture) => {
+        scene.background = texture;
+        renderer.render(scene, camera);
+    })
     load_model(current_model_index)
     renderer.setAnimationLoop(animate)
 }
