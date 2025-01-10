@@ -1,13 +1,12 @@
 <template>
   <div>
     <div id="svg-container">
-      <svg class="svg-item" width="800" height="600"></svg>
+      <svg class="svg-item" width="600" height="400"></svg>
       <br><br>
       <svg class="svg-item" width="600" height="400"></svg>/
     </div>
 
   </div>
-  <router-link to="/">Go to Home</router-link>
 </template>
 
 <script>
@@ -21,3 +20,6 @@ export default {
   }
 }
 </script>
+<style scoped>
+
+</style>

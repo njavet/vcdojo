@@ -1,7 +1,6 @@
 <template>
   <div>
     <h1>MCRN Donnager</h1>
-    <a href="/">Back to Home</a>
     <br><br>
     <object type="image/svg+xml"
             data="/images/donnager_logo.svg" width="64" height="64">

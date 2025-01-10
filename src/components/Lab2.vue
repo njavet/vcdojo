@@ -19,7 +19,6 @@
       <button class="color-btn" v-for="color in colors" :key="color" :data-color="color" @click="change_model_color(color)">
         {{ color }}
       </button>
-      <router-link to="/">Go to Home</router-link>
     </div>
   </div>
 </template>
