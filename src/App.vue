@@ -11,10 +11,10 @@ export default {
 </script>
 
 <style>
-#app {
-    font-family: Arial, sans-serif;
+#appi {
+    font-family: "Andale Mono", sans-serif;
     color: #6312ff;
-    background-color: #000000;
+    background-color: #e0d4fc;
     text-align: center;
     margin-top: 40px;
 }

@@ -1,15 +1,20 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: Inconsolata, sans-serif;
     color: #6312ff;
-    background-color: #000000;
+    background-color: #e0d4fc;
 }
 .axis path,
 
+#stats-container {
+    background-color: #b9a0f9;
+
+}
 #bars {
     position: absolute;
     background-color: white;
     left: 900px;
     bottom: 0;
+    color: #6312ff;
 }
 
 #chart {

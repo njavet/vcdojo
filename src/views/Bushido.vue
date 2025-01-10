@@ -1,9 +1,9 @@
 <template>
   <div>
-    <div id="stats-container">
-      <svg id="chart" width="800" height="600"></svg>
+    <div id="svg-container">
+      <svg class="svg-item" width="800" height="600"></svg>
       <br><br>
-      <svg id="bars" width="600" height="400"></svg>/
+      <svg class="svg-item" width="600" height="400"></svg>/
     </div>
 
   </div>
@@ -12,7 +12,7 @@
 
 <script>
 import { render_chart, draw_bars} from "../js/bushido.js"
-import '../styles/lab1.css';
+import '../styles/bushido.css';
 export default {
   name: 'Bushido',
   mounted() {
