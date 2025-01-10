@@ -25,7 +25,6 @@
 </template>
 
 <script>
-import '../styles/lab2.css';
 import { initializeScene, toggle_rotation, switch_model, change_model_color} from '../js/lab2.js';
 export default {
   name: 'Lab2',

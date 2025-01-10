@@ -12,7 +12,6 @@
 
 <script>
 import { render_chart, draw_bars} from "../js/bushido.js"
-import '../styles/bushido.css';
 export default {
   name: 'Bushido',
   mounted() {
