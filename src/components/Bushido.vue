@@ -1,9 +1,8 @@
 <template>
   <div>
-    <div id="svg-container">
+    <div class="svg-container">
       <svg id="weight" class="svg-item" width="600" height="400"></svg>
-      <br><br>
-      <svg id="study" class="svg-item" width="600" height="400"></svg>/
+      <svg id="study" class="svg-item" width="600" height="400"></svg>
     </div>
 
   </div>
@@ -19,6 +18,17 @@ export default {
   }
 }
 </script>
+
 <style scoped>
+
+.svg-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.svg-item {
+  border: 1px solid #ccc;
+}
 
 </style>

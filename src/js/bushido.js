@@ -74,7 +74,7 @@ function draw_line(svg, scales, data) {
 
 export function render_chart() {
     const parseDate = d3.timeParse("%Y-%m-%d");
-    const svg = create_svg(800, 600, "#weight");
+    const svg = create_svg(600, 400, "#weight");
 
     d3.json("private/weight.json").then(data => {
         data.forEach(d => {
@@ -99,7 +99,7 @@ export function draw_bars() {
             left: 40
         },
         width = 600 - margin.left - margin.right,
-        height = 300 - margin.top - margin.bottom;
+        height = 400 - margin.top - margin.bottom;
 
     // Parse the date / time
     var parseDate = d3.timeParse("%Y-%m-%d");

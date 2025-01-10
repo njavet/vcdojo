@@ -10,7 +10,7 @@
     </button>
     <br><br>
     <button>
-      <router-link to="/lab2">Go to Lab 2 </router-link>
+      <router-link to="/tycho-station">Tycho Station</router-link>
     </button>
     <br><br>
     <button>
